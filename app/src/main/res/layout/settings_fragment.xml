@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material_light">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/scrollView2" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:focusable="true"
+            android:focusableInTouchMode="true" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Location"
+                    android:id="@+id/locationLabel"
+                    android:textColor="#ff000000"
+                    android:layout_marginStart="30dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true" />
+
+                <AutoCompleteTextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:inputType="textCapSentences|textNoSuggestions"
+                    android:singleLine="true"
+                    android:ems="10"
+                    android:hint="Type a location"
+                    android:id="@+id/location"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="30dp"
+                    android:textColor="#FF000000"
+                    android:layout_below="@+id/locationLabel"
+                    android:layout_alignStart="@+id/locationLabel"
+                    android:nextFocusUp="@id/location"
+                    android:nextFocusLeft="@id/location" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/windLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Wind Speed"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/speedLabel"
+                    android:textColor="#FF000000" />
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/speedSpinner"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/speedLabel"
+                    android:layout_marginEnd="30dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/tempLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Temperature"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/tempLabel"
+                    android:textColor="#FF000000" />
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tempSpinner"
+                    android:layout_alignTop="@+id/tempLabel"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="30dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/pressureLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Pressure"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/pressureLabel"
+                    android:textColor="#FF000000" />
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pressureSpinner"
+                    android:layout_alignTop="@+id/pressureLabel"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="30dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/timeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Time Format"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/timeLabel"
+                    android:textColor="#FF000000" />
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/timeSpinner"
+                    android:layout_alignTop="@+id/timeLabel"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="30dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/modeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="Mode"
+                    android:layout_marginStart="30dp"
+                    android:id="@+id/modeLabel"
+                    android:textColor="#FF000000" />
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/modeSpinner"
+                    android:layout_alignTop="@+id/modeLabel"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="30dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/widgetLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="30dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginStart="30dp"
+                    android:text="Widget Color"
+                    android:id="@+id/widgetLabel"
+                    android:textColor="#FF000000" />
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/widgetSpinner"
+                    android:layout_alignTop="@+id/widgetLabel"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="30dp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

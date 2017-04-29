@@ -3,12 +3,16 @@ package pw.adithya.insider;
 import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.app.SearchManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -36,8 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Fragment fragment = new BrowseFragment();
-        setFragment(fragment);
+        setFragment(new BrowseFragment());
 
         mNavItems.add(new NavItem("Browse", R.drawable.ic_search_black_24dp));
         mNavItems.add(new NavItem("Watchlist", R.drawable.ic_glasses));
@@ -72,8 +75,10 @@ public class MainActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
 
         View headerView = inflater.inflate(R.layout.header,null, false);
+        View footerView = inflater.inflate(R.layout.footer,null, false);
 
         mDrawerList.addHeaderView(headerView);
+        mDrawerList.addFooterView(footerView);
 
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
             @Override
@@ -98,19 +103,23 @@ public class MainActivity extends AppCompatActivity {
 
         switch(position)
         {
-            case 0: fragment = new BrowseFragment();
+            case 1: fragment = new BrowseFragment();
+                    break;
+            default:
                     break;
         }
 
-        transaction.beginTransaction()
-                .replace(R.id.mainContent, fragment)
-                .commit();
+        if (fragment != null) {
+            transaction.beginTransaction()
+                    .replace(R.id.mainContent, fragment)
+                    .commit();
 
-        mDrawerList.setItemChecked(position, true);
-        setTitle(mNavItems.get(position).mTitle);
+            mDrawerList.setItemChecked(position, true);
+            setTitle(mNavItems.get(position - 1).mTitle);
 
-        // Close the drawer
-        mDrawerLayout.closeDrawer(mDrawerPane);
+            // Close the drawer
+            mDrawerLayout.closeDrawer(mDrawerPane);
+        }
     }
 
     /*public boolean onPrepareOptionsMenu(Menu menu) {
@@ -144,5 +153,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mDrawerToggle.syncState();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        // Retrieve the SearchView and plug it into SearchManager
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+
+        return true;
     }
 }

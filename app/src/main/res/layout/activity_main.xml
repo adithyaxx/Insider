@@ -17,13 +17,13 @@
         android:id="@+id/drawerPane"
         android:layout_gravity="start">
 
-        <!-- List of Actions (pages) -->
-        <ListView
-            android:id="@+id/navList"
-            android:layout_width="280dp"
-            android:layout_height="match_parent"
-            android:choiceMode="singleChoice"
-            android:background="#ffffffff" />
+            <!-- List of Actions (pages) -->
+            <ListView
+                android:id="@+id/navList"
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:choiceMode="singleChoice"
+                android:background="#ffffffff" />
 
     </RelativeLayout>
 

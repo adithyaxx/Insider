@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         if (fragment != null) {
             transaction.beginTransaction()
                     .replace(R.id.mainContent, fragment)
+                    .addToBackStack("stack")
                     .commit();
 
             mDrawerList.setItemChecked(position, true);

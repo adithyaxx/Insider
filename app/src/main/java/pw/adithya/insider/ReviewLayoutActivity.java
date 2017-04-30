@@ -1,6 +1,7 @@
 package pw.adithya.insider;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
@@ -15,7 +16,6 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,27 +32,18 @@ public class ReviewLayoutActivity extends Fragment {
         rootview = inflater.inflate(R.layout.review_layout, container, false);
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
-
         Locale.setDefault(Locale.ENGLISH);
 
         Button b = (Button) rootview.findViewById(R.id.btnReview);
         b.setOnClickListener(mButtonClickListener);
 
+        TextView tv = (TextView) rootview.findViewById(R.id.tvText);
+        tv.setText("Hamilton Ptd Ltd is a Chinese company that produces meat products such as beef, chicken and pork. Hamilton is known for their ham, which can be found in most Asian countries.\n\nPros/Cons: \nx Nursing Room \nx Fridge \nx Childcare \nx Gym \n- 30 toilets for women across 30 floors");
 
+        addReview("R. T.",(float)2.0,"12/12/16","Sexual harassment is rampant in Hamilton. I have been groped so many times this past year that I am finally at the end of my rope. None of my attempts to report to the management have worked. In fact just last week, I was fired for “filing too many irrelevant complains”. Irrelevant. The management actually considers sexual harassment as irrelevant. Cue horror. I have filed a lawsuit, but I don’t think I have a legitimate chances of winning. My harasser was careful to do it when nobody else is around and now, it’s a game of “He says, she says”. To add on, right before I was fired, I was suddenly given all the bad shifts. Honestly, if this isn’t a classic example of retaliation by the management, I don’t know what is. Don’t bother applying for Hamilton, it does not care about its employees.");
 
-        addReview("R. T.",(float)2.0,"12/12/16","I am quite sick of my boss. He is constantly criticising me just because he didn’t approve of me having a baby as a single woman. He even once pretended to look for an engagement ring on my hand. I repeatedly told him that his behaviour is outright discrimination and harassment but of course he didn’t listen.  \n" +
-                "\n" +
-                "Plenty more atrocious incidents happened throughout this year and I was finally at the end of my rope. \n" +
-                "\n" +
-                "And guess what happened after I complained to human resources? Well that boss of mine– who happens to be the COO of my company, fired me. The company even informed me that my claims were “without merit” since the said COO treated me “without regards to her gender, marital status, pregnancy or leave”. \n" +
-                "\n" +
-                "A fat load of joke. I have filed a lawsuit, but I don’t think I have a legitimate chances of winning. My harasser was careful to do it when nobody else is around and now, it’s a game of “He says, she says”. \n" +
-                "\n" +
-                "To add on, right before I was fired, I was suddenly given all the bad shifts. Honestly, if this isn’t a classic example of retaliation by the management, I don’t know what is. Well, I suppose since he is the management, I should have predicted this. \n" +
-                "\n" +
-                "Oh well. Main thing is girls, if an executive in the management can have such an appalling attitude, it tells you a lot about the company culture. I would avoid Hamilton if I were you.");
-
-        addReview("U. E.",(float)3.0,"12/11/16","");
+        addReview("U. E.",(float)3.0,"12/11/16","I am quite sick of my boss. He is constantly criticising me just because he didn’t approve of me having a baby as a single woman. He even once pretended to look for an engagement ring on my hand. I repeatedly told him that his behaviour is outright discrimination and harassment but of course he didn’t listen.  And guess what happened after I complained to human resources? Well that boss of mine– who happens to be the COO of my company, fired me. The company even informed me that my claims were “without merit” since the said COO treated me “without regards to the employee’s gender, marital status, pregnancy or leave”. \n" +
+                "Well, I suppose since he is the management, I should have predicted this. If an executive in the management can have such an appalling attitude, it tells you a lot about the company culture. I would avoid Hamilton if I were you.");
 
         return rootview;
     }
@@ -66,39 +57,9 @@ public class ReviewLayoutActivity extends Fragment {
     private View.OnClickListener mButtonClickListener = new View.OnClickListener() {
         public void onClick(View v) {
             showEditDialog();
-            rootview2 = getActivity().getLayoutInflater().inflate(R.layout.review_input_window, null);
-            Button b2 = (Button) rootview2.findViewById(R.id.btnSubmit);
-            //b2.setOnClickListener(mButtonClickListener2);
+
         }
     };
-
-    /*private View.OnClickListener mButtonClickListener2 = new View.OnClickListener() {
-        public void onClick(View v) {
-            View inputBox = (View) v.getParent();
-            EditText eT = (EditText)inputBox.findViewById(R.id.etReviewText);
-            RatingBar rB = (RatingBar)inputBox.findViewById(R.id.rb);
-            float bu = rB.getRating();
-            Toast.makeText(myContext,String.valueOf(bu),Toast.LENGTH_LONG).show();
-            Calendar c = Calendar.getInstance();
-            SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
-            String formattedDate = df.format(c.getTime());
-            addReview("J. D.",bu,formattedDate,eT.getText().toString());
-        }
-    };*/
-
-    public void onClick (View v)
-    {
-        View inputBox = (View) v.getParent();
-        EditText eT = (EditText)inputBox.findViewById(R.id.etReviewText);
-        RatingBar rB = (RatingBar)inputBox.findViewById(R.id.rb);
-        float bu = rB.getRating();
-        Toast.makeText(myContext,String.valueOf(bu),Toast.LENGTH_LONG).show();
-        Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy");
-        String formattedDate = df.format(c.getTime());
-        addReview("J. D.",bu,formattedDate,eT.getText().toString());
-        dismissEditDialog();
-    }
 
     public void dismissEditDialog(){
         if(currentOpenInput != null)
@@ -115,6 +76,7 @@ public class ReviewLayoutActivity extends Fragment {
 
     public void addReview(String name, float rating, String date, String review){
         LayoutInflater vi = (LayoutInflater) getActivity().getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //LayoutInflater vi = LayoutInflater.from(ReviewLayoutActivity.this);
         View v = vi.inflate(R.layout.review_item, null);
 
         // fill in name

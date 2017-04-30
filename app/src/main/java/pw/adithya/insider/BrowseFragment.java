@@ -47,7 +47,7 @@ public class BrowseFragment extends Fragment
                 Fragment fragment = new ReviewLayoutActivity();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.mainContent, fragment);
+                fragmentTransaction.replace(R.id.mainContent, fragment, "StickbuTAG");
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

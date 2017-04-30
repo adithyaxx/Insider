@@ -1,11 +1,11 @@
 package pw.adithya.insider;
 
 import android.annotation.TargetApi;
-import android.app.Fragment;
-import android.app.FragmentManager;
+import android.support.v4.app.FragmentManager;
 import android.app.SearchManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout mDrawerPane;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
-    FragmentManager transaction = getFragmentManager();
+    FragmentManager transaction = getSupportFragmentManager();
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
     }*/
 
     public void setFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.mainContent, fragment)
                 .commit();

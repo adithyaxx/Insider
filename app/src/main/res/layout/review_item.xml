@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top|left"
+            android:text="R. T."
+            android:textSize="18sp" />
+
+        <RatingBar
+            android:id="@+id/rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="2.4"
+            android:stepSize="0.1" />
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top|left"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="12/12/16" />
+
+        <TextView
+            android:id="@+id/tvReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="I am quite sick of my boss. He is constantly criticising me just because he didn’t approve of me having a baby as a single woman. He even once pretended to look for an engagement ring on my hand. I repeatedly told him that his behaviour is outright discrimination and harassment but of course he didn’t listen.
+
+Plenty more atrocious incidents happened throughout this year and I was finally at the end of my rope.
+
+And guess what happened after I complained to human resources? Well that boss of mine– who happens to be the COO of my company, fired me. The company even informed me that my claims were “without merit” since the said COO treated me “without regards to her gender, marital status, pregnancy or leave”.
+
+A fat load of joke. I have filed a lawsuit, but I don’t think I have a legitimate chances of winning. My harasser was careful to do it when nobody else is around and now, it’s a game of “He says, she says”.
+
+To add on, right before I was fired, I was suddenly given all the bad shifts. Honestly, if this isn’t a classic example of retaliation by the management, I don’t know what is. Well, I suppose since he is the management, I should have predicted this.
+
+Oh well. Main thing is girls, if an executive in the management can have such an appalling attitude, it tells you a lot about the company culture. I would avoid Hamilton if I were you." />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
